@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: cozy-cluster
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: DATA_DIR
+        value: /data

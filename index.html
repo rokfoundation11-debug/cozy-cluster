@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cozy Cluster | Holiday homes</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%8B%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+:root{--ink:#fff8ef;--accent:#ffb347;--pink:#ff6f91;--edge:rgba(255,255,255,.4)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 "Trebuchet MS","Segoe UI",system-ui,sans-serif;color:var(--ink);min-height:100vh;overflow-x:hidden;
+background:radial-gradient(1100px 700px at 10% -10%,#7b4bff66,transparent),radial-gradient(900px 600px at 100% 20%,#ff6f9144,transparent),#1d1230}
+h1,h2,h3{font-family:Georgia,"Palatino Linotype",serif;margin:0;letter-spacing:.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.glass{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.3),rgba(255,255,255,.08) 55%,rgba(255,255,255,.18));
+-webkit-backdrop-filter:blur(18px) saturate(1.7);backdrop-filter:blur(18px) saturate(1.7);border:1px solid var(--edge);border-radius:24px;
+box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -8px 18px rgba(255,255,255,.05),0 14px 40px rgba(0,0,0,.35)}
+.btn{display:inline-block;cursor:pointer;border:1px solid var(--edge);border-radius:999px;padding:.6em 1.3em;font-weight:700;color:#2b1500;text-decoration:none;
+background:linear-gradient(180deg,#ffd27a,var(--accent));box-shadow:inset 0 1px 0 #fff9,0 6px 18px rgba(255,179,71,.4);position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.3,1.6,.5,1),box-shadow .25s}
+.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.7) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn:hover{transform:translateY(-2px) scale(1.04)}.btn:hover::after{transform:translateX(120%)}
+.btn:disabled{opacity:.6;cursor:wait}
+.btn.ghost{color:var(--ink);background:rgba(255,255,255,.14);box-shadow:inset 0 1px 0 #fff6}
+nav{position:sticky;top:10px;z-index:20;margin:10px auto 0;max-width:1100px;width:calc(100% - 24px);display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 10px 8px 20px;border-radius:999px}
+nav b{font:700 1.3rem Georgia,serif}
+nav div{display:flex;gap:8px}
+nav .btn{padding:.45em 1em}
+.lights{height:16px;margin:8px 0 0;background:radial-gradient(circle at 10px 8px,#ff5c5c 5px,transparent 6px) 0 0/80px 16px,radial-gradient(circle at 30px 8px,#ffd34d 5px,transparent 6px) 0 0/80px 16px,radial-gradient(circle at 50px 8px,#5cd6ff 5px,transparent 6px) 0 0/80px 16px,radial-gradient(circle at 70px 8px,#7dff9b 5px,transparent 6px) 0 0/80px 16px;animation:twinkle 2.4s ease-in-out infinite;filter:drop-shadow(0 0 6px #fff8)}
+@keyframes twinkle{50%{opacity:.45}}
+main{max-width:1100px;margin:0 auto;padding:0 12px 60px}
+.view{display:none}
+.view.on{display:block;animation:morph .65s cubic-bezier(.2,.8,.2,1)}
+@keyframes morph{from{opacity:0;filter:blur(16px);transform:translateY(24px) scale(.97)}}
+.hero{position:relative;margin-top:14px;min-height:620px;border-radius:32px;overflow:hidden;border:1px solid var(--edge);
+background:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 26px,transparent 26px 52px),linear-gradient(#6a4377,#3c2552)}
+.window{position:absolute;top:70px;right:6%;width:clamp(70px,14vw,130px);aspect-ratio:.85;border-radius:14px 14px 4px 4px;border:6px solid #e9d6b8;background:linear-gradient(#0f1b4a,#31406f);box-shadow:inset 0 0 30px #0008}
+.window::before{content:"";position:absolute;inset:0;background:linear-gradient(#e9d6b8,#e9d6b8) center/6px 100% no-repeat,linear-gradient(#e9d6b8,#e9d6b8) center/100% 6px no-repeat}
+.window::after{content:"";position:absolute;top:14%;left:18%;width:22%;aspect-ratio:1;border-radius:50%;background:#fff6c9;box-shadow:0 0 22px #fff6c9}
+.lamp{position:absolute;left:5%;bottom:30%;width:14px;height:34%;background:#caa26b;border-radius:7px}
+.lamp::before{content:"";position:absolute;top:-34px;left:-30px;width:74px;height:50px;background:#ffd98a;border-radius:10px 10px 4px 4px 
+/ 30px 30px 4px 4px;box-shadow:0 0 90px 40px rgba(255,200,100,.45);animation:glow 3s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 0 110px 55px rgba(255,200,100,.6)}}
+.hero-card{position:relative;z-index:2;max-width:560px;margin:44px auto 0;padding:28px 26px;text-align:center}
+.hero-card h1{font-size:clamp(2.2rem,7vw,3.6rem);line-height:1.05}
+.hero-card p{margin:.7em 0 1.2em;font-size:1.05rem}
+.hero-card .btn{margin:4px}
+.floor{position:absolute;left:0;right:0;bottom:0;height:36%;background:repeating-linear-gradient(90deg,rgba(0,0,0,.18) 0 2px,transparent 2px 90px),linear-gradient(#a8693a,#6e3f22);border-top:6px solid #4a2a18}
+.rug{position:absolute;left:8%;right:8%;bottom:6%;height:46%;border-radius:50%;background:radial-gradient(ellipse,#c43d5b 0 40%,#e8b04a 41% 46%,#c43d5b 47%);opacity:.85}
+.couches{position:absolute;left:0;right:0;bottom:7%;z-index:3;display:flex;justify-content:center;align-items:flex-end;gap:1.2vw;padding:0 6px}
+.couch{position:relative;width:clamp(62px,17vw,170px);aspect-ratio:3/2;cursor:pointer;transition:translate .3s cubic-bezier(.3,1.8,.5,1),rotate .3s;animation:bob 4s ease-in-out infinite}
+.couch:hover,.couch:focus-visible{translate:0 -14px;rotate:-3deg}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.couch i{position:absolute;display:block;background:var(--p),var(--c);box-shadow:inset 0 -6px 10px rgba(0,0,0,.2),inset 0 3px 4px rgba(255,255,255,.3)}
+.couch .back{left:14%;right:14%;top:0;height:62%;border-radius:22% 22% 6px 6px;filter:brightness(.88)}
+.couch .seat{left:8%;right:8%;top:46%;height:34%;border-radius:14px}
+.couch .arm{top:28%;width:19%;height:54%;border-radius:40% 40% 12px 12px}
+.couch .l{left:0}.couch .r{right:0}
+.couch .leg{bottom:0;width:7%;height:16%;background:#3b2a20;box-shadow:none;border-radius:0 0 4px 4px}
+.couch .a{left:12%}.couch .b{right:12%}
+.couch span{position:absolute;left:50%;top:100%;translate:-50% 4px;white-space:nowrap;font-size:clamp(8px,1.25vw,12px);background:#0007;padding:1px 8px;border-radius:99px}
+#stays{scroll-margin-top:90px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:30px 0 18px;padding:14px 16px}
+.bar h2{flex:1 1 200px;font-size:1.6rem}
+.field{width:100%;padding:.6em .9em;border-radius:14px;border:1px solid var(--edge);background:rgba(255,255,255,.14);outline-offset:0}
+.field::placeholder{color:#fff9}
+select.field option{color:#222}
+.bar .field{width:auto;flex:1 1 150px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.card{overflow:hidden;transition:transform .35s cubic-bezier(.3,1.5,.5,1)}
+.card:hover{transform:translateY(-6px) rotate(-.6deg)}
+.ph{height:170px;display:grid;place-items:center;font-size:4rem;background:linear-gradient(135deg,#ff9a5a,#ff5f8f 50%,#7b4bff)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.card .body{padding:14px 16px 16px}
+.card h3{font-size:1.2rem}
+.meta{margin:.2em 0;font-size:.88rem;opacity:.85}
+.desc{margin:.4em 0 .8em;font-size:.93rem}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.row b{font-size:1.2rem}
+.empty{grid-column:1/-1;text-align:center;padding:30px}
+.empty a{color:var(--accent)}
+.panel{max-width:620px;margin:30px auto;padding:26px}
+.panel h2{font-size:1.9rem;margin-bottom:.2em}
+label{display:block;font-weight:700;font-size:.9rem;margin:12px 0 4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+textarea.field{min-height:90px;resize:vertical}
+.pv{margin-top:8px;max-height:180px;border-radius:14px;display:block}
+.err{color:#ffc2c2;font-weight:700;min-height:1.4em;margin:10px 0 0}
+.scrim{position:fixed;inset:0;z-index:60;display:grid;place-items:center;padding:14px;background:rgba(10,5,25,.5);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.open{opacity:1;pointer-events:auto}
+.sheet{width:100%;max-width:460px;max-height:92vh;overflow:auto;padding:24px;transform:translateY(30px) scale(.9);filter:blur(10px);transition:transform .5s cubic-bezier(.2,1.3,.4,1),filter .4s}
+.scrim.open .sheet{transform:none;filter:none}
+.x{position:absolute;top:10px;right:12px;width:36px;height:36px;border-radius:50%;border:1px solid var(--edge);background:rgba(255,255,255,.15);cursor:pointer;font-size:1.1rem}
+.total{margin:12px 0 4px;font-weight:700;font-size:1.1rem}
+.toast{position:fixed;left:50%;bottom:22px;z-index:80;max-width:90vw;padding:12px 20px;border-radius:999px;translate:-50% 140%;transition:translate .5s cubic-bezier(.2,1.4,.4,1)}
+.toast.show{translate:-50% 0}.toast.bad{color:#ffd0d0}
+#snow{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+#snow i{position:absolute;top:-30px;animation:fall linear infinite;font-style:normal}
+@keyframes fall{to{transform:translate(40px,110vh) rotate(360deg)}}
+[hidden]{display:none!important}
+@media (max-width:560px){.two{grid-template-columns:1fr}.hero{min-height:560px}.couch span{display:none}nav b{font-size:1.05rem}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="snow" aria-hidden="true"></div>
+<nav class="glass" aria-label="Main">
+  <b>🛋️ Cozy Cluster</b>
+  <div><button class="btn ghost" data-go="home">Browse homes</button><button class="btn" data-go="host">Host a home</button></div>
+</nav>
+<div class="lights" aria-hidden="true"></div>
+<main>
+<section id="home" class="view on">
+  <div class="hero">
+    <div class="window" aria-hidden="true"></div><div class="lamp" aria-hidden="true"></div>
+    <div class="hero-card glass">
+      <h1>Cozy Cluster</h1>
+      <p>Pick a home for the holidays. Real couches, real kitchens, someone else's snow to shovel.</p>
+      <a class="btn" href="#stays">Find a home</a><button class="btn ghost" data-go="host">List yours</button>
+    </div>
+    <div class="floor" aria-hidden="true"><div class="rug"></div></div>
+    <div class="couches" id="couches"></div>
+  </div>
+  <div id="stays" class="bar glass">
+    <h2>Homes for the holidays</h2>
+    <input id="q" class="field" type="search" placeholder="Search city or name" aria-label="Search homes">
+    <select id="gs" class="field" aria-label="Guests"><option value="0">Any group size</option><option value="2">2+ guests</option><option value="4">4+ guests</option><option value="6">6+ guests</option><option value="10">10+ guests</option></select>
+  </div>
+  <div id="grid" class="grid" aria-live="polite"><p class="empty glass">Loading cozy homes...</p></div>
+</section>
+
+<section id="host" class="view">
+  <form id="hform" class="panel glass" novalidate>
+    <h2>List your home</h2>
+    <p class="meta">No account needed. Your home shows up on the front page right away.</p>
+    <label for="ht">Home name</label><input id="ht" name="title" class="field" required maxlength="80" placeholder="Snowed-in A-frame">
+    <div class="two">
+      <div><label for="hc">City</label><input id="hc" name="city" class="field" required maxlength="60" placeholder="Denver, CO"></div>
+      <div><label for="hh">Your name</label><input id="hh" name="host" class="field" required maxlength="60"></div>
+      <div><label for="hp">Price per night ($)</label><input id="hp" name="price" class="field" type="number" required min="1" max="100000" inputmode="numeric"></div>
+      <div><label for="hg">Max guests</label><input id="hg" name="guests" class="field" type="number" required min="1" max="50" inputmode="numeric"></div>
+    </div>
+    <label for="hd">Describe the vibe</label><textarea id="hd" name="description" class="field" maxlength="1000" placeholder="Fireplace, big table, best couch in town"></textarea>
+    <label for="hf">Photo (JPG or PNG)</label><input id="hf" type="file" accept="image/*" class="field">
+    <img id="pv" class="pv" alt="Photo preview" hidden>
+    <p id="herr" class="err" role="alert"></p>
+    <button class="btn" id="hbtn" type="submit">Publish home</button>
+  </form>
+</section>
+</main>
+
+<div id="modal" class="scrim" aria-hidden="true">
+  <div class="sheet glass" role="dialog" aria-modal="true" aria-labelledby="bt">
+    <button class="x" id="bx" aria-label="Close">✕</button>
+    <form id="bform" novalidate>
+      <h2 id="bt"></h2><p class="meta" id="bsub"></p>
+      <div class="two">
+        <div><label for="bi">Check-in</label><input id="bi" name="checkin" type="date" class="field" required></div>
+        <div><label for="bo">Check-out</label><input id="bo" name="checkout" type="date" class="field" required></div>
+      </div>
+      <label for="bg">Guests</label><input id="bg" name="guests" type="number" min="1" value="2" class="field" required inputmode="numeric">
+      <label for="bn">Your name</label><input id="bn" name="name" class="field" required maxlength="80" autocomplete="name">
+      <label for="be">Email</label><input id="be" name="email" type="email" class="field" required maxlength="120" autocomplete="email">
+      <p class="total" id="total">Pick your dates</p>
+      <p id="berr" class="err" role="alert"></p>
+      <button class="btn" id="bbtn" type="submit">Book this home</button>
+    </form>
+    <div id="bdone" hidden><h2>You're booked 🎉</h2><p id="bmsg"></p><button class="btn" id="bok">Done</button></div>
+  </div>
+</div>
+<div id="toast" class="toast glass" role="status"></div>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const EMOJI=['🏡','🏔️','🏖️','🎄','🛋️','🏘️'];
+let homes=[],current=null,photo='';
+
+function toast(msg,bad){const t=$('#toast');t.textContent=msg;t.className='toast glass show'+(bad?' bad':'');clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove('show'),3800)}
+
+async function api(path,body){
+  const post=body!==undefined;
+  const opt=post?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};
+  for(let i=0;i<5;i++){
+    let r;
+    try{r=await fetch('/api/'+path,opt)}
+    catch(e){if(post||i===4)throw new Error('Network problem. Check your connection and try again.');await sleep(1500);continue}
+    if(r.status===502&&i<4){await sleep(1500);continue}
+    const j=await r.json().catch(()=>({}));
+    if(!r.ok)throw new Error(j.error||'Something went wrong. Please try again.');
+    return j;
+  }
+  throw new Error('Server is waking up. Try again in a moment.');
+}
+
+/* living room couches: original designs, one per mood */
+const COUCHES=[
+ ['Garage Genius','#7bd389','radial-gradient(rgba(0,0,0,.2) 18%,transparent 20%) 0 0/14px 14px','Best seat for inventing things at 3 a.m.'],
+ ['Cosmic Roadtrip','#ff9a3c','repeating-linear-gradient(90deg,rgba(255,255,255,.3) 0 6px,transparent 6px 14px)','Seat belts optional, snacks mandatory.'],
+ ['Cul-de-Sac Classic','#b5651d','repeating-linear-gradient(0deg,rgba(0,0,0,.2) 0 5px,transparent 5px 14px),repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0 5px,transparent 5px 14px)','Plaid, stains, and zero regrets.'],
+ ['Late-Night Lounge','#7a5af8','radial-gradient(rgba(255,255,255,.75) 10%,transparent 12%) 0 0/18px 18px','Weird shows welcome. Blanket included.'],
+ ['Bean-Bag Bonanza','#ff6fae','none','Sinks in. Does not let go.']];
+$('#couches').innerHTML=COUCHES.map((c,i)=>`<div class="couch" tabindex="0" role="button" aria-label="${esc(c[0])} couch" data-q="${esc(c[3])}" style="--c:${c[1]};--p:${c[2]};animation-delay:-${i*.7}s"><i class="back"></i><i class="seat"></i><i class="arm l"></i><i class="arm r"></i><i class="leg a"></i><i class="leg b"></i><span>${esc(c[0])}</span></div>`).join('');
+$('#couches').addEventListener('click',e=>{const c=e.target.closest('.couch');if(c)toast(c.dataset.q)});
+$('#couches').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const c=e.target.closest('.couch');if(c){e.preventDefault();toast(c.dataset.q)}}});
+
+/* views */
+function show(v){$$('.view').forEach(s=>s.classList.toggle('on',s.id===v));window.scrollTo({top:0,behavior:'smooth'})}
+document.addEventListener('click',e=>{
+  const g=e.target.closest('[data-go]');if(g){e.preventDefault();show(g.dataset.go);return}
+  const b=e.target.closest('[data-book]');if(b)openBook(b.dataset.book);
+});
+
+/* listings */
+function card(h){
+  let n=0;for(const ch of h.id)n+=ch.charCodeAt(0);
+  const pic=h.image?`<img src="${esc(h.image)}" alt="Photo of ${esc(h.title)}" loading="lazy">`:EMOJI[n%EMOJI.length];
+  return `<article class="card glass"><div class="ph">${pic}</div><div class="body"><h3>${esc(h.title)}</h3><p class="meta">📍 ${esc(h.city)} · sleeps ${h.guests} · hosted by ${esc(h.host)}</p><p class="desc">${esc(h.description)}</p><div class="row"><span><b>$${h.price}</b> / night</span><button class="btn" data-book="${esc(h.id)}">Book</button></div></div></article>`;
+}
+function render(){
+  const q=$('#q').value.trim().toLowerCase(),n=+$('#gs').value||0;
+  const list=homes.filter(h=>(!q||(h.city+' '+h.title).toLowerCase().includes(q))&&h.guests>=n);
+  $('#grid').innerHTML=list.length?list.map(card).join(''):'<p class="empty glass">No homes match yet. Clear the filters or <a href="#" data-go="host">list yours</a>.</p>';
+}
+async function loadHomes(){
+  try{homes=await api('homes');render()}
+  catch(e){$('#grid').innerHTML='<p class="empty glass">'+esc(e.message)+' <button class="btn" id="retry">Try again</button></p>';$('#retry').onclick=loadHomes}
+}
+$('#q').addEventListener('input',render);$('#gs').addEventListener('change',render);
+
+/* booking */
+const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const nights=()=>{const a=Date.parse($('#bi').value),b=Date.parse($('#bo').value);return isNaN(a)||isNaN(b)?0:Math.round((b-a)/864e5)};
+function calc(){
+  const n=nights(),t=$('#total');
+  if($('#bi').value){$('#bo').min=new Date(Date.parse($('#bi').value)+864e5).toISOString().slice(0,10)}
+  t.textContent=n>0?`${n} night${n>1?'s':''} × $${current.price} = $${n*current.price}`:(n<0||($('#bi').value&&$('#bo').value)?'Check-out must be after check-in':'Pick your dates');
+}
+function openBook(id){
+  current=homes.find(h=>h.id===id);if(!current)return;
+  $('#bform').reset();$('#bt').textContent=current.title;$('#bsub').textContent=current.city+' · sleeps up to '+current.guests;
+  $('#bi').min=$('#bo').min=today();$('#bg').max=current.guests;$('#berr').textContent='';$('#bbtn').disabled=false;
+  $('#bform').hidden=false;$('#bdone').hidden=true;calc();
+  const m=$('#modal');m.classList.add('open');m.setAttribute('aria-hidden','false');setTimeout(()=>$('#bi').focus(),50);
+}
+function closeBook(){const m=$('#modal');m.classList.remove('open');m.setAttribute('aria-hidden','true')}
+$('#bx').onclick=$('#bok').onclick=closeBook;
+$('#modal').addEventListener('click',e=>{if(e.target.id==='modal')closeBook()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeBook()});
+$('#bi').addEventListener('change',calc);$('#bo').addEventListener('change',calc);
+$('#bform').addEventListener('submit',async e=>{
+  e.preventDefault();const err=$('#berr');err.textContent='';
+  const f=e.target;
+  if(!f.checkValidity()){err.textContent='Fill in every field with valid details.';f.reportValidity();return}
+  if(nights()<1){err.textContent='Check-out must be after check-in.';return}
+  const btn=$('#bbtn');btn.disabled=true;
+  try{
+    const d=Object.fromEntries(new FormData(f));
+    const r=await api('bookings',{homeId:current.id,name:d.name,email:d.email,checkin:d.checkin,checkout:d.checkout,guests:d.guests});
+    $('#bmsg').textContent=`${r.title}: ${r.nights} night${r.nights>1?'s':''}, $${r.total} total. Confirmation #${r.id}.`;
+    f.hidden=true;$('#bdone').hidden=false;
+  }catch(x){err.textContent=x.message;btn.disabled=false}
+});
+
+/* hosting + photo upload */
+function compress(file){return new Promise((res,rej)=>{
+  const u=URL.createObjectURL(file),im=new Image();
+  im.onload=()=>{URL.revokeObjectURL(u);const s=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');
+    c.width=Math.max(1,Math.round(im.width*s));c.height=Math.max(1,Math.round(im.height*s));const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);
+    let q=.8,d=c.toDataURL('image/jpeg',q);while(d.length>1.2e6&&q>.3){q-=.15;d=c.toDataURL('image/jpeg',q)}res(d)};
+  im.onerror=()=>{URL.revokeObjectURL(u);rej(new Error("Couldn't read that photo. Try a JPG or PNG."))};
+  im.src=u})}
+$('#hf').addEventListener('change',async e=>{
+  const f=e.target.files[0];photo='';$('#pv').hidden=true;$('#herr').textContent='';if(!f)return;
+  try{photo=await compress(f);$('#pv').src=photo;$('#pv').hidden=false}
+  catch(x){$('#herr').textContent=x.message;e.target.value=''}
+});
+$('#hform').addEventListener('submit',async e=>{
+  e.preventDefault();const err=$('#herr');err.textContent='';
+  const f=e.target;
+  if(!f.checkValidity()){err.textContent='Fill in the required fields.';f.reportValidity();return}
+  const btn=$('#hbtn');btn.disabled=true;
+  try{
+    const d=Object.fromEntries(new FormData(f));
+    await api('homes',{title:d.title,city:d.city,host:d.host,price:d.price,guests:d.guests,description:d.description,image:photo});
+    f.reset();photo='';$('#pv').hidden=true;
+    await loadHomes();show('home');toast('Your home is live 🎄');
+  }catch(x){err.textContent=x.message}
+  btn.disabled=false;
+});
+
+/* snow */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const s=$('#snow');
+  for(let i=0;i<26;i++){const f=document.createElement('i');f.textContent='❄';
+    f.style.cssText=`left:${Math.random()*100}%;font-size:${8+Math.random()*14}px;animation-duration:${8+Math.random()*10}s;animation-delay:-${Math.random()*14}s;opacity:${.3+Math.random()*.5}`;s.appendChild(f)}
+}
+loadHomes();
+</script>
+</body>
+</html>
